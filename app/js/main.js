@@ -1,14 +1,9 @@
 var React = require('react');
 var flux = require('./flux');
 
-var Hello = React.createClass({
-
-  render: function() {
-    return <div>Hello, {this.props.name}!</div>
-  }
-})
+var App = require('./components/App');
 
 React.render(
-  <Hello name="World" />,
+  <App />,
   document.getElementById('hello')
 )
