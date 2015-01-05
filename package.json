@@ -1,0 +1,16 @@
+{
+  "name": "smartcal-webapp",
+  "version": "1.0.0",
+  "description": "Client team rules!",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "gulp": "^3.8.10",
+    "reactify": "^0.17.1",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}
