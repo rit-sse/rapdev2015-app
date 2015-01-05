@@ -18,13 +18,14 @@ var paths = {
   css_files: './app/css/**/*.css',
   build_dir: './dist/',
   react_root: './app/bower_components/react',
-  fluxxor_root: './app/bower_components/fluxxor',
+  fluxxor_root: './app/bower_components/fluxxor/build',
 }
 
 gulp.task('build:scripts', function(){
   var b = browserify({
     extensions: ['.jsx'],
-    paths: [paths.react_root, paths.fluxxor_root]
+    paths: [paths.react_root, paths.fluxxor_root],
+    debug: true
   });
   b.transform(reactify); // use the reactify transform
   b.add('./' + path.join(paths.client_root, paths.js_entrypoint));
