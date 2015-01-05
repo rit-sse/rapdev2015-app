@@ -12,5 +12,8 @@
     "gulp": "^3.8.10",
     "reactify": "^0.17.1",
     "vinyl-source-stream": "^1.0.0"
+  },
+  "dependencies": {
+    "express": "~4.10.7"
   }
 }
