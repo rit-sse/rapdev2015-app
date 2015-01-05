@@ -11,7 +11,9 @@
     "browserify": "^8.0.3",
     "gulp": "^3.8.10",
     "reactify": "^0.17.1",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "gulp-minify-css": "~0.3.11",
+    "gulp-concat": "~2.4.3"
   },
   "dependencies": {
     "express": "~4.10.7"
