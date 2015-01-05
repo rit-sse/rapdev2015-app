@@ -2,6 +2,7 @@ var browserify = require('browserify');
 var gulp = require('gulp');
 var source = require("vinyl-source-stream");
 var reactify = require('reactify');
+var app = require('./server/server');
 
 
 var paths = {
@@ -30,4 +31,12 @@ gulp.task('watch-scripts', function(){
 	gulp.watch(paths.js_files, ['compile-scripts']);
 });
 
-gulp.task('default', ['watch-scripts']);
+gulp.task('start-server', function(){
+  app.set('port', process.env.PORT || 3000);
+
+  var server = app.listen(app.get('port'), function() {
+    console.log('Express server listening on port ' + server.address().port);
+  });
+});
+
+gulp.task('default', ['start-server', 'watch-scripts']);
