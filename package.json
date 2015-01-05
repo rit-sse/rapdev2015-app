@@ -9,8 +9,10 @@
   "author": "",
   "devDependencies": {
     "browserify": "^8.0.3",
+    "del": "^1.1.1",
     "gulp": "^3.8.10",
     "reactify": "^0.17.1",
+    "run-sequence": "^1.0.2",
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
