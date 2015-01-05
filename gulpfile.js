@@ -15,7 +15,7 @@ var paths = {
   js_files: './app/**/*.@(js|jsx)',
   js_entrypoint: './js/main.js',
   other_files: './app/**/*.!(js|jsx|css)',
-  css_files: './app/css/**/*.css',
+  css_files: './app/**/*.css',
   build_dir: './dist/',
   react_root: './app/bower_components/react',
   fluxxor_root: './app/bower_components/fluxxor/build',
