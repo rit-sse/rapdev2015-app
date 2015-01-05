@@ -18,7 +18,7 @@ var paths = {
 gulp.task('compile-scripts', function(){
   var b = browserify({
     extensions: ['.jsx'],
-  	paths: [paths.react_root, paths.fluxxor_root]
+    paths: [paths.react_root, paths.fluxxor_root]
   });
   b.transform(reactify); // use the reactify transform
   b.add(paths.js_entrypoint);
