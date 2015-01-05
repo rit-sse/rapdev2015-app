@@ -15,7 +15,7 @@ var paths = {
   js_files: './app/**/*.@(js|jsx)',
   js_entrypoint: './js/main.js',
   other_files: './app/**/*.!(js|jsx|css)',
-  css_files: './app/css/**/*.css',
+  css_files: './app/**/*.css',
   build_dir: './dist/',
   react_root: './app/bower_components/react',
   fluxxor_root: './app/bower_components/fluxxor/build',
@@ -45,7 +45,7 @@ gulp.task('clean', function(cb){
 
 gulp.task('minify:css', function(){
   gulp.src(paths.css_files)
-    .pipe(concat('app.css'))
+    .pipe(concat('css/app.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest(paths.build_dir));
 });

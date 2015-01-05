@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "react": "*",
-    "fluxxor": "~1.5.1"
+    "fluxxor": "~1.5.1",
+    "normalize.css": "~3.0.2"
   }
 }
