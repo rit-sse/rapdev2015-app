@@ -1,4 +1,5 @@
 var React = require('react');
+var flux = require('./flux');
 
 var Hello = React.createClass({
 

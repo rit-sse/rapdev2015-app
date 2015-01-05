@@ -1,3 +1,5 @@
 /**************************
-  require all stores here
+  require all actions here
  **************************/
+
+  module.exports = {};
