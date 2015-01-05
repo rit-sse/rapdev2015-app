@@ -7,7 +7,7 @@ var reactify = require('reactify');
 var paths = {
 	client_root: './app/',
 	js_root: './app/js/',
-	js_files: './app/**/*.js',
+	js_files: './app/**/*.@(js|jsx)',
 	js_entrypoint: './app/js/main.js',
 	build_dir: './dist/',
 	react_root: './app/bower_components/react',
@@ -16,6 +16,7 @@ var paths = {
 
 gulp.task('compile-scripts', function(){
   var b = browserify({
+    extensions: ['.jsx'],
   	paths: [paths.react_root, paths.fluxxor_root]
   });
   b.transform(reactify); // use the reactify transform
@@ -30,4 +31,4 @@ gulp.task('watch-scripts', function(){
 	gulp.watch(paths.js_files, ['compile-scripts']);
 });
 
-gulp.task('default', ['watch-scripts']);
+gulp.task('default', ['watch-scripts', 'compile-scripts']);
