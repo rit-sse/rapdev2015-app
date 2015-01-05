@@ -1,7 +1,7 @@
 Client team rules!
-
+==================
 Getting Setup
-______________
+-------------
 
 ### Prereqs
 * Gulp	- `npm install -g gulp`
