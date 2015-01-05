@@ -4,8 +4,8 @@ Getting Setup
 ______________
 
 ### Prereqs
-Gulp	- `npm install -g gulp`
-Bower	- `npm install -g bower`
+* Gulp	- `npm install -g gulp`
+* Bower	- `npm install -g bower`
 
 ### Initial Setup
 * From `app/`: `bower install`
