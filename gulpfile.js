@@ -74,7 +74,8 @@ gulp.task('test', function() {
 gulp.task('build', ['build:scripts', 'minify:css', 'copy']);
 
 gulp.task('watch', function(){
-  gulp.watch(paths.js_files, ['build:scripts']);
+  gulp.watch(paths.js_files, ['build:scripts', 'test']);
+  gulp.watch(paths.test_files, ['test']);
   gulp.watch([paths.other_files, '!./app/bower_components/**/*'], ['copy']);
   gulp.watch(paths.css_files,['minify:css']);
 });
