@@ -8,6 +8,7 @@ var app = require('./server/server');
 var sequence = require('run-sequence');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
+var mocha = require('gulp-mocha');
 
 var paths = {
   client_root: './app/',
@@ -19,6 +20,7 @@ var paths = {
   build_dir: './dist/',
   react_root: './app/bower_components/react',
   fluxxor_root: './app/bower_components/fluxxor/build',
+  test_files: './test/**/*-test.js',
 }
 
 gulp.task('build:scripts', function(){
@@ -58,10 +60,22 @@ gulp.task('start-server', function(){
   });
 });
 
+gulp.task('test', function() {
+  function onError(err) {
+    console.log(err.toString());
+    this.emit('end');
+  } // http://stackoverflow.com/a/21678601
+
+  gulp.src(paths.test_files)
+    .pipe(mocha())
+    .on('error', onError);
+});
+
 gulp.task('build', ['build:scripts', 'minify:css', 'copy']);
 
 gulp.task('watch', function(){
-  gulp.watch(paths.js_files, ['build:scripts']);
+  gulp.watch(paths.js_files, ['build:scripts', 'test']);
+  gulp.watch(paths.test_files, ['test']);
   gulp.watch([paths.other_files, '!./app/bower_components/**/*'], ['copy']);
   gulp.watch(paths.css_files,['minify:css']);
 });
