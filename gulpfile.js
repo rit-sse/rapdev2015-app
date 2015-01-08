@@ -20,7 +20,7 @@ var paths = {
   build_dir: './dist/',
   react_root: './app/bower_components/react',
   fluxxor_root: './app/bower_components/fluxxor/build',
-  test_files: './test/**/*-test.js',
+  test_files: './test/**/*.js',
 }
 
 gulp.task('build:scripts', function(){
