@@ -2,12 +2,13 @@ var browserify = require('browserify');
 var gulp = require('gulp');
 var del = require('del');
 var path = require('path');
-var source = require("vinyl-source-stream");
+var source = require('vinyl-source-stream');
 var reactify = require('reactify');
 var app = require('./server/server');
 var sequence = require('run-sequence');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
+var mocha = require('gulp-mocha');
 
 var paths = {
   client_root: './app/',
@@ -23,7 +24,8 @@ var paths = {
     './app/bower_components/hello/dist', 
     './app/bower_components/es6-promise',
     './app/bower_components/fetch'
-  ]
+  ],
+  test_files: './test/**/*-test.js'
 };
 
 gulp.task('build:scripts', function(){
@@ -63,10 +65,22 @@ gulp.task('start-server', function(){
   });
 });
 
+gulp.task('test', function() {
+  function onError(err) {
+    console.log(err.toString());
+    this.emit('end');
+  } // http://stackoverflow.com/a/21678601
+
+  gulp.src(paths.test_files)
+    .pipe(mocha())
+    .on('error', onError);
+});
+
 gulp.task('build', ['build:scripts', 'minify:css', 'copy']);
 
 gulp.task('watch', function(){
-  gulp.watch(paths.js_files, ['build:scripts']);
+  gulp.watch(paths.js_files, ['build:scripts', 'test']);
+  gulp.watch(paths.test_files, ['test']);
   gulp.watch([paths.other_files, '!./app/bower_components/**/*'], ['copy']);
   gulp.watch(paths.css_files,['minify:css']);
 });
