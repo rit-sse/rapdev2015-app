@@ -2,7 +2,7 @@ var browserify = require('browserify');
 var gulp = require('gulp');
 var del = require('del');
 var path = require('path');
-var source = require("vinyl-source-stream");
+var source = require('vinyl-source-stream');
 var reactify = require('reactify');
 var app = require('./server/server');
 var sequence = require('run-sequence');
@@ -18,15 +18,20 @@ var paths = {
   other_files: './app/**/*.!(js|jsx|css)',
   css_files: './app/**/*.css',
   build_dir: './dist/',
-  react_root: './app/bower_components/react',
-  fluxxor_root: './app/bower_components/fluxxor/build',
-  test_files: './test/**/*-test.js',
-}
+  bower_js_paths: [
+    './app/bower_components/react', 
+    './app/bower_components/fluxxor/build', 
+    './app/bower_components/hello/dist', 
+    './app/bower_components/es6-promise',
+    './app/bower_components/fetch'
+  ],
+  test_files: './test/**/*-test.js'
+};
 
 gulp.task('build:scripts', function(){
   var b = browserify({
     extensions: ['.jsx'],
-    paths: [paths.react_root, paths.fluxxor_root],
+    paths: paths.bower_js_paths,
     debug: true
   });
   b.transform(reactify); // use the reactify transform
