@@ -4,7 +4,8 @@ require('fetch');
 var React = require('react');
 var flux = require('./flux');
 var hello = require('hellojs');
-var api = require('./api/core');
+var api = require('./api');
+var Tag = api.Tag;
 
 var service = 'facebook';
 
@@ -28,6 +29,7 @@ var Login = React.createClass({
             }).then(function(json) {
               console.log('Got response: ');
               console.log(json);
+              api.setToken(json.token);
               self.setState({token: json.token});
             });
         }, function(e){
@@ -53,25 +55,20 @@ var TestButton = React.createClass({
   },
   handleClick: function handleTestButtonClick(event) {
     var self = this;
-    api
-      .get('http://localhost:3001/api/tags', loginButton.state.token)
-      .then(function(json){
-        console.log(json)
-        self.setState({response: json});
-      })
-      .catch(function(err){
-        self.setState({response: err});
-      })
-  //   fetch('http://localhost:3001/api/tags', {
-  //     headers: {
-  //       'Authorization': 'Bearer '+loginButton.state.token
-  //     }
-  //   }).then(function(resp) {
-  //     self.setState({response: resp});
-  //   });
+    Tag
+      .create({name: 'projects', color: 'FF00FF' })
+      .then(function(){
+        Tag.all().then(function(json){
+          console.log(json)
+          self.setState({response: JSON.stringify(json, null, 4)});
+        })
+        .catch(function(err){
+          self.setState({response: JSON.stringify(err, null, 4)});
+        });
+      });
   },
   render: function renderTestButton() {
-    return <div><button onClick={this.handleClick}>Fetch a thing!</button><br/><span>{this.state.response}</span></div>
+    return <div><button onClick={this.handleClick}>Fetch a thing!</button><br/><span><pre>{this.state.response}</pre></span></div>
   }
 });
 
