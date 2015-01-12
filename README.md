@@ -13,3 +13,5 @@ Getting Setup
 	* `npm install -d`
 	* `gulp`
 
+### Running Tests
+From a shell, run `gulp test`.
