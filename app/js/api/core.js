@@ -1,18 +1,16 @@
 require('es6-promise').polyfill();
 require('fetch');
 
-var token;
-
-function setToken(t) {
-  token = t;
-}
-
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
     return Promise.resolve(response);
   } else {
     return Promise.reject(new Error(response.statusText));
   }
+}
+
+function getToken() {
+  return localStorage.getObject('jwt').token;
 }
 
 function json(response) {
@@ -23,7 +21,7 @@ function request(url, method, body) {
   return fetch(url, {
     method: method,
     headers: {
-      'Authorization': 'Bearer ' + token,
+      'Authorization': 'Bearer ' + getToken(),
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -53,6 +51,5 @@ module.exports = {
   get: get,
   post: post,
   put: put,
-  del: del,
-  setToken: setToken
+  del: del
 }

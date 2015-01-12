@@ -1,5 +1,6 @@
 require('es6-promise').polyfill();
 require('fetch');
+require('./local-storage');
 
 var React = require('react');
 var flux = require('./flux');
@@ -29,7 +30,7 @@ var Login = React.createClass({
             }).then(function(json) {
               console.log('Got response: ');
               console.log(json);
-              api.setToken(json.token);
+              localStorage.setObject('jwt', json);
               self.setState({token: json.token});
             });
         }, function(e){

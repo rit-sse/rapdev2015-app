@@ -9,11 +9,11 @@ var Tag = {
   one: function(id) {
     return api.get(baseEndpoint + '/' + id);
   },
-  create: function(body) {
-    return api.post(baseEndpoint, body);
+  create: function(tag) {
+    return api.post(baseEndpoint, tag);
   },
-  update: function(id, body) {
-    return api.put(baseEndpoint + '/' + id, body);
+  update: function(id, tag) {
+    return api.put(baseEndpoint + '/' + id, tag);
   },
   remove: function(id) {
     return api.del(baseEndpoint + '/' + id);
