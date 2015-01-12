@@ -1,19 +1,19 @@
 var api = require('./core');
 
-var baseEndpoint = 'http://localhost:3001/api/events';
+var baseEndpoint = 'http://localhost:3001/api/todos';
 
-var Event = {
+var Todo = {
   all: function() {
     return api.get(baseEndpoint);
   },
   one: function(id) {
     return api.get(baseEndpoint + '/' + id);
   },
-  create: function(event) {
-    return api.post(baseEndpoint, event);
+  create: function(todo) {
+    return api.post(baseEndpoint, todo);
   },
-  update: function(id, event) {
-    return api.put(baseEndpoint + '/' + id, event);
+  update: function(id, todo) {
+    return api.put(baseEndpoint + '/' + id, todo);
   },
   remove: function(id) {
     return api.del(baseEndpoint + '/' + id);
@@ -38,7 +38,19 @@ var Event = {
   },
   removeReminder: function(id, reminderId) {
     return api.post(baseEndpoint + '/' + id + '/reminders', { reminderId: reminderId });
+  },
+  complete: function(id) {
+    return api.put(baseEndpoint + '/' + id + '/complete');
+  },
+  reopen: function(id) {
+    return api.put(baseEndpoint + '/' + id + '/reopen');
+  },
+  subtasks: function(id) {
+    return api.get(baseEndpoint + '/' + id + '/subtasks');
+  },
+  createSubtask: function(id, post) {
+    return api.post(baseEndpoint + '/' + id + '/subtasks', post);
   }
 };
 
-module.exports = Event;
+module.exports = Todo;
