@@ -1,30 +1,49 @@
-function get(url) {
-  // Return a new promise.
-  return new Promise(function(resolve, reject) {
-    // Do the usual XHR stuff
-    var req = new XMLHttpRequest();
-    req.open('GET', url);
+require('es6-promise').polyfill();
+require('fetch');
 
-    req.onload = function() {
-      // This is called even on 404 etc
-      // so check the status
-      if (req.status == 200) {
-        // Resolve the promise with the response text
-        resolve(req.response);
-      }
-      else {
-        // Otherwise reject with the status text
-        // which will hopefully be a meaningful error
-        reject(Error(req.statusText));
-      }
-    };
+function status(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
+}
 
-    // Handle network errors
-    req.onerror = function() {
-      reject(Error("Network Error"));
-    };
+function json(response) {
+  return response.json();
+}
 
-    // Make the request
-    req.send();
-  });
+function request(url, token, method, body) {
+  return fetch(url, {
+    method: method,
+    headers: {
+      'Authorization': 'Bearer '+ token
+    },
+    body: JSON.stringify(body)
+  })
+    .then(status)
+    .then(json)
+}
+
+function get(url, token) {
+  return request(url, token, 'get');
+}
+
+function post(url, token, body) {
+  return request(url, token, 'post', body);
+}
+
+function put(url, token, body) {
+  return request(url, token, 'put', body);
+}
+
+function del(url, token) {
+  return request(url, token, 'delete');
+}
+
+module.exports = {
+  get: get,
+  post: post,
+  put: put,
+  del: del
 }

@@ -4,6 +4,7 @@ require('fetch');
 var React = require('react');
 var flux = require('./flux');
 var hello = require('hellojs');
+var api = require('./api/core');
 
 var service = 'facebook';
 
@@ -52,13 +53,22 @@ var TestButton = React.createClass({
   },
   handleClick: function handleTestButtonClick(event) {
     var self = this;
-    fetch('http://localhost:3001/api/tags', {
-      headers: {
-        'Authorization': 'Bearer '+loginButton.state.token
-      }
-    }).then(function(resp) {
-      self.setState({response: resp});
-    });
+    api
+      .get('http://localhost:3001/api/tags', loginButton.state.token)
+      .then(function(json){
+        console.log(json)
+        self.setState({response: json});
+      })
+      .catch(function(err){
+        self.setState({response: err});
+      })
+  //   fetch('http://localhost:3001/api/tags', {
+  //     headers: {
+  //       'Authorization': 'Bearer '+loginButton.state.token
+  //     }
+  //   }).then(function(resp) {
+  //     self.setState({response: resp});
+  //   });
   },
   render: function renderTestButton() {
     return <div><button onClick={this.handleClick}>Fetch a thing!</button><br/><span>{this.state.response}</span></div>
