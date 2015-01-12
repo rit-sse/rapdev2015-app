@@ -2,4 +2,6 @@
   require all stores here
  **************************/
 
- module.exports = {};
+ module.exports = {
+  User: require('./User.js')
+ };
