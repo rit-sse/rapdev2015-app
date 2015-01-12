@@ -3,7 +3,6 @@ require('fetch');
 
 var React = require('react');
 var flux = require('./flux');
-var hello = require('hello.all');
 
 var service = 'facebook';
 

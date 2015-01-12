@@ -20,6 +20,12 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
-    "express": "~4.10.7"
+    "express": "~4.10.7",
+    "fetch": "^0.3.6",
+    "fluxxor": "^1.5.1",
+    "material-ui": "^0.5.0",
+    "normalize.css": "^3.0.2",
+    "promise": "^6.0.1",
+    "react": "^0.12.2"
   }
 }
