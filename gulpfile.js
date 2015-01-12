@@ -18,20 +18,12 @@ var paths = {
   other_files: './app/**/*.!(js|jsx|css)',
   css_files: './app/**/*.css',
   build_dir: './dist/',
-  bower_js_paths: [
-    './app/bower_components/react', 
-    './app/bower_components/fluxxor/build', 
-    './app/bower_components/hello/dist', 
-    './app/bower_components/es6-promise',
-    './app/bower_components/fetch'
-  ],
   test_files: './test/**/*-test.js'
 };
 
 gulp.task('build:scripts', function(){
   var b = browserify({
     extensions: ['.jsx'],
-    paths: paths.bower_js_paths,
     debug: true
   });
   b.transform(reactify); // use the reactify transform
@@ -42,7 +34,7 @@ gulp.task('build:scripts', function(){
 });
 
 gulp.task('copy', function(){
-  gulp.src([paths.other_files, '!./app/bower_components/**/*'])
+  gulp.src([paths.other_files])
     .pipe(gulp.dest(paths.build_dir));
 });
 
