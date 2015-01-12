@@ -9,14 +9,17 @@ var sequence = require('run-sequence');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
+var less = require('gulp-less');
+var sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
   client_root: './app/',
   js_root: './app/js/',
   js_files: './app/**/*.@(js|jsx)',
   js_entrypoint: './js/main.js',
-  other_files: './app/**/*.!(js|jsx|css)',
-  css_files: './app/**/*.css',
+  other_files: './app/**/*.!(js|jsx|css|less)',
+  less_files:'./app/**/*.@(css|less)',
+  material_less: './node_modules/material-ui/src/less/', 
   build_dir: './dist/',
   test_files: './test/**/*-test.js'
 };
@@ -68,13 +71,24 @@ gulp.task('test', function() {
     .on('error', onError);
 });
 
-gulp.task('build', ['build:scripts', 'minify:css', 'copy']);
+gulp.task('build:less', function(){
+  gulp.src(paths.less_files)
+    .pipe(sourcemaps.init())
+    .pipe(less({
+      paths: [ paths.material_less ]
+    }))
+    .on('error', console.log.bind(console))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.build_dir));
+});
+
+gulp.task('build', ['build:scripts', 'build:less', 'copy']);
 
 gulp.task('watch', function(){
   gulp.watch(paths.js_files, ['build:scripts', 'test']);
   gulp.watch(paths.test_files, ['test']);
   gulp.watch([paths.other_files, '!./app/bower_components/**/*'], ['copy']);
-  gulp.watch(paths.css_files,['minify:css']);
+  gulp.watch(paths.less_files,['build:less']);
 });
 
 
