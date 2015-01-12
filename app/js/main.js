@@ -1,8 +1,9 @@
-require('promise').polyfill();
+require('es6-promise').polyfill();
 require('fetch');
 
 var React = require('react');
 var flux = require('./flux');
+var hello = require('hellojs');
 
 var service = 'facebook';
 
