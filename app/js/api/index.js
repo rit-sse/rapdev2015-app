@@ -3,5 +3,6 @@ module.exports = {
   Event: require('./event'),
   Invite: require('./invite'),
   Todo: require('./todo'),
-  Token: require('./token')
+  Token: require('./token'),
+  User: require('./user')
 };
