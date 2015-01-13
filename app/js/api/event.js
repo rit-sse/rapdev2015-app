@@ -1,6 +1,6 @@
 var core = require('./core');
-
-var baseEndpoint = 'http://localhost:3001/api/events';
+var api_url = require('./config').api_url;
+var baseEndpoint = `${api_url}/events`;
 
 var Event = {
   all() {

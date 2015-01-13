@@ -1,6 +1,6 @@
 var core = require('./core');
-
-var baseEndpoint = 'http://localhost:3001/api/invites';
+var api_url = require('./config').api_url;
+var baseEndpoint = `${api_url}/invites`;
 
 var Invite = {
   accept(id) {

@@ -1,6 +1,6 @@
 var core = require('./core');
-
-var baseEndpoint = 'http://localhost:3001/api/todos';
+var api_url = require('./config').api_url;
+var baseEndpoint = `${api_url}/todos`;
 
 var Todo = {
   all() {

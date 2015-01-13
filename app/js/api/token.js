@@ -1,11 +1,12 @@
 var core = require('./core');
+var host = require('./config').api_host;
 require('../local-storage');
 
 var Token = {
 
   get(provider, token) {
     return core
-      .get('http://localhost:3001/token?token='+ token +'&provider=' + provider)
+      .get(`${host}/token?token=${token}&provider=${provider}`)
       .then((json) => {
         localStorage.setObject('jwt', json);
         setTimeout(() => {
@@ -16,7 +17,7 @@ var Token = {
   },
   refresh() {
     return core
-      .get('http://localhost:3001/token?provider=refresh_token')
+      .get(`${host}/token?provider=refresh_token`)
       .then((json) => {
         localStorage.setObject('jwt', json);
         setTimeout(() => {
