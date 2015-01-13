@@ -27,7 +27,7 @@ var Login = React.createClass({
         return hello(service).api('me').then(function(json){
             console.log(json.id, json.email);
             Token
-              .get(json.id, token, service)
+              .get(service, token)
               .then(function(json) {
                 console.log('Got response: ');
                 console.log(json);

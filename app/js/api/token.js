@@ -3,13 +3,13 @@ require('../local-storage');
 
 var Token = {
 
-  get: function(id, token, provider) {
+  get: function(provider, token) {
     return core
-      .get('http://localhost:3001/token?token='+ token +'&user='+ id +'&provider=' + provider)
+      .get('http://localhost:3001/token?token='+ token +'&provider=' + provider)
       .then(function timeout(json){
         localStorage.setObject('jwt', json);
         setTimeout(function refresh(){
-          Token.get(id, token, provider);
+          Token.get(provider, token);
         }, 30*60000);
         return json;
       });
