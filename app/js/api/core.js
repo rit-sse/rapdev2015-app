@@ -10,7 +10,7 @@ function status(response) {
 }
 
 function getToken() {
-  return (localStorage.getObject('jwt') || {}).token ;
+  return (localStorage.getObject('jwt') || {});
 }
 
 function json(response) {
@@ -21,7 +21,7 @@ function request(url, method, body) {
   return fetch(url, {
     method: method,
     headers: {
-      'Authorization': 'Bearer ' + getToken(),
+      'Authorization': 'Bearer ' + getToken().token,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
