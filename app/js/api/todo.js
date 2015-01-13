@@ -25,10 +25,10 @@ var Todo = {
     return core.get(`${baseEndpoint}/${id}/tags`);
   },
   addTag(id, tagId) {
-    return core.put(`${baseEndpoint}/${id}/tags/add`, { tagId });
+    return core.post(`${baseEndpoint}/${id}/tags`, { tagId });
   },
-  removeTag(id, tagId) {
-    return core.put(`${baseEndpoint}/${id}/tags/add`, { tagId });
+  removeTag(id, tagName) {
+    return core.delete(`${baseEndpoint}/${id}/tags/${tagName}`);
   },
   getReminders(id) {
     return core.get(`${baseEndpoint}/${id}/reminders`);
