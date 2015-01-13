@@ -6,7 +6,7 @@ module.exports = {
   signIn: function(provider){
     hello(provider)
       .login({scope: 'email'})
-      .then(function(data) {
+      .then((data) => {
         console.log(data);
         console.log('looking up profile...');
         var token = data.authResponse.access_token;
@@ -14,7 +14,7 @@ module.exports = {
         }, function(e){
             console.log(e.error.message);
         })
-      .then(function(){
+      .then(() => {
         this.dispatch(actions.SIGN_IN_SUCCESS, {
             firstName: 'first',
             lastName: 'last'
