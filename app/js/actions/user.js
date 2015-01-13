@@ -11,9 +11,7 @@ module.exports = {
           console.log('looking up profile...');
           var token = data.authResponse.access_token;
           return Token.get(provider, token);
-        },(e) => {
-          console.log(e.error.message);
-        })
+        }, (e) => onsole.log(e.error.message))
       .then((token) => {
         this.dispatch(actions.SIGN_IN_SUCCESS, {
             firstName: 'first',

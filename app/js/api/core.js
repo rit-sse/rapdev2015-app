@@ -21,7 +21,7 @@ function request(url, method, body) {
   return fetch(url, {
     method: method,
     headers: {
-      'Authorization': 'Bearer ' + getToken().token,
+      'Authorization': `Bearer ${getToken().token}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
