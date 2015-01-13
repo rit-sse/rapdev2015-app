@@ -15,32 +15,9 @@ var Login = React.createClass({
   getInitialState: function getInitialLoginState() {
     return {token: null};
   },
-  handleClick: function handleLoginClick(event) {
-    if (this.state.token) return;
-    var self = this;
-    hello(service)
-      .login({scope: 'email'})
-      .then(function(data) {
-        console.log(data);
-        console.log('looking up profile...');
-        var token = data.authResponse.access_token;
-        return hello(service).api('me').then(function(json){
-            console.log(json.id, json.email);
-            Token
-              .get(service, token)
-              .then(function(json) {
-                console.log('Got response: ');
-                console.log(json);
-                self.setState({token: json.token});
-              });
-        }, function(e){
-            console.log(e.error.message);
-        });
-      });
-  },
   render: function renderLogin() {
     hello(service).init({facebook: '1654582774769215'}, {response_type: 'token'});
-    return <span onClick={this.handleClick}>{this.state.token ? 'Logged In!' : 'Login'}</span>
+    return <span onClick={flux.actions.user.signIn.bind(null, 'facebook')}>{this.state.token ? 'Logged In!' : 'Login'}</span>
   }
 });
 

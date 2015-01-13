@@ -1,10 +1,10 @@
 var actions = require('../constants/actions');
 var Token = require('../api/token');
-
+var hello = require('hellojs');
 
 module.exports = {
   signIn: function(provider){
-    hello(service)
+    hello(provider)
       .login({scope: 'email'})
       .then(function(data) {
         console.log(data);
@@ -13,8 +13,7 @@ module.exports = {
         return Token.get(provider, token);
         }, function(e){
             console.log(e.error.message);
-        });
-      })
+        })
       .then(function(){
         this.dispatch(actions.SIGN_IN_SUCCESS, {
             firstName: 'first',

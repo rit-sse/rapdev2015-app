@@ -2,4 +2,6 @@
   require all actions here
  **************************/
 
-  module.exports = {};
+  module.exports = {
+    user: require('./user')
+  };
