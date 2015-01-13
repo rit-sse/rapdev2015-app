@@ -8,6 +8,7 @@ module.exports = {
     less_files:'./app/**/*.@(less)',
     material_less: './node_modules/material-ui/src/less/', 
     build_dir: './dist/',
-    test_files: './test/**/*-test.js'
+    test_files: './test/**/*-test.js',
+    normalize_css: './node_modules/normalize-css/normalize.css'
   }
 };
