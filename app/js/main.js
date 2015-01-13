@@ -1,12 +1,13 @@
 require('es6-promise').polyfill();
 require('fetch');
-require('./local-storage');
+
 
 var React = require('react');
 var flux = require('./flux');
 var hello = require('hellojs');
 var api = require('./api');
 var Tag = api.Tag;
+var Token = api.Token
 
 var service = 'facebook';
 
@@ -25,14 +26,13 @@ var Login = React.createClass({
         var token = data.authResponse.access_token;
         return hello(service).api('me').then(function(json){
             console.log(json.id, json.email);
-            fetch('http://localhost:3001/token?token='+token+'&user='+json.id+'&provider='+service).then(function(resp) {
-              return resp.json();
-            }).then(function(json) {
-              console.log('Got response: ');
-              console.log(json);
-              localStorage.setObject('jwt', json);
-              self.setState({token: json.token});
-            });
+            Token
+              .get(json.id, token, service)
+              .then(function(json) {
+                console.log('Got response: ');
+                console.log(json);
+                self.setState({token: json.token});
+              });
         }, function(e){
             console.log(e.error.message);
         });

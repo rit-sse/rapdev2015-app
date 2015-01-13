@@ -1,13 +1,13 @@
-var api = require('./core');
+var core = require('./core');
 
 var baseEndpoint = 'http://localhost:3001/api/invites';
 
 var Invite = {
   accept: function(id) {
-    return api.post(baseEndpoint + '/' + id + '/accept');
+    return core.post(baseEndpoint + '/' + id + '/accept');
   },
   decline: function(id) {
-    return api.post(baseEndpoint + '/' + id + '/decline');
+    return core.post(baseEndpoint + '/' + id + '/decline');
   }
 };
 

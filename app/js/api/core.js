@@ -51,5 +51,5 @@ module.exports = {
   get: get,
   post: post,
   put: put,
-  del: del
+  delete: del
 }
