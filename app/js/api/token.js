@@ -9,7 +9,18 @@ var Token = {
       .then(function timeout(json){
         localStorage.setObject('jwt', json);
         setTimeout(function refresh(){
-          Token.get(provider, token);
+          Token.refresh();
+        }, 30*60000);
+        return json;
+      });
+  },
+  refresh: function() {
+    return core
+      .get('http://localhost:3001/token?provider=refresh_token')
+      .then(function timeout(json){
+        localStorage.setObject('jwt', json);
+        setTimeout(function refresh(){
+          Token.refresh();
         }, 30*60000);
         return json;
       });
