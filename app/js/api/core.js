@@ -10,7 +10,7 @@ function status(response) {
 }
 
 function getToken() {
-  return localStorage.getObject('jwt').token;
+  return (localStorage.getObject('jwt') || {}).token ;
 }
 
 function json(response) {

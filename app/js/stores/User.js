@@ -27,11 +27,11 @@ var UserStore = Fluxxor.createStore({
   _signOut: function(payload, type){
     this.data = {};
     this.emit('change');
-  }
+  },
 
   isSignedIn: function(){
     return User.isSignedIn();
-  },
+  }
 
 });
 
