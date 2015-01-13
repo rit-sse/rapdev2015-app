@@ -11,6 +11,7 @@ var Token = api.Token
 
 var service = 'facebook';
 
+
 var Login = React.createClass({
   getInitialState: function getInitialLoginState() {
     return {token: null};
