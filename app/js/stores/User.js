@@ -3,7 +3,7 @@ var actions = require('../constants/actions');
 var User = require('../api/user');
 
 var UserStore = Fluxxor.createStore({
-  initialize: function(options){
+  initialize(options) {
 
     this.data = {};
 
@@ -15,7 +15,7 @@ var UserStore = Fluxxor.createStore({
     );
   },
 
-  _signIn: function(payload, type){
+  _signIn(payload, type) {
     this.data.user = {
       firstName: payload.firstName,
       lastName: payload.lastName
@@ -24,12 +24,12 @@ var UserStore = Fluxxor.createStore({
     this.emit('change');
   },
 
-  _signOut: function(payload, type){
+  _signOut(payload, type) {
     this.data = {};
     this.emit('change');
   },
 
-  isSignedIn: function(){
+  isSignedIn() {
     return User.isSignedIn();
   }
 

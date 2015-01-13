@@ -13,10 +13,10 @@ var service = 'facebook';
 
 
 var Login = React.createClass({
-  getInitialState: function getInitialLoginState() {
+  getInitialState() {
     return {token: null};
   },
-  render: function renderLogin() {
+  render() {
     hello(service).init({facebook: '1654582774769215'}, {response_type: 'token'});
     return <span onClick={flux.actions.user.signIn.bind(null, 'facebook')}>{this.state.token ? 'Logged In!' : 'Login'}</span>
   }
@@ -29,24 +29,23 @@ var loginButton = React.render(
 );
 
 var TestButton = React.createClass({
-  getInitialState: function getInitialLoginState() {
+  getInitialState() {
     return {response: ''};
   },
-  handleClick: function handleTestButtonClick(event) {
-    var self = this;
+  handleClick(event) {
     Tag
       .create({name: 'projects', color: 'FF00FF' })
-      .then(function(){
+      .then(() => {
         Tag.all().then(function(json){
           console.log(json)
-          self.setState({response: JSON.stringify(json, null, 4)});
+          this.setState({response: JSON.stringify(json, null, 4)});
         })
-        .catch(function(err){
-          self.setState({response: JSON.stringify(err, null, 4)});
+        .catch((err) => {
+          this.setState({response: JSON.stringify(err, null, 4)});
         });
       });
   },
-  render: function renderTestButton() {
+  render() {
     return <div><button onClick={this.handleClick}>Fetch a thing!</button><br/><span><pre>{this.state.response}</pre></span></div>
   }
 });

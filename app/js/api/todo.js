@@ -3,52 +3,52 @@ var core = require('./core');
 var baseEndpoint = 'http://localhost:3001/api/todos';
 
 var Todo = {
-  all: function() {
+  all() {
     return core.get(baseEndpoint);
   },
-  one: function(id) {
+  one(id) {
     return core.get(baseEndpoint + '/' + id);
   },
-  create: function(todo) {
+  create(todo) {
     return core.post(baseEndpoint, todo);
   },
-  update: function(id, todo) {
+  update(id, todo) {
     return core.put(baseEndpoint + '/' + id, todo);
   },
-  remove: function(id) {
+  remove(id) {
     return core.delete(baseEndpoint + '/' + id);
   },
-  invite: function(id, email) {
+  invite(id, email) {
     return core.post(baseEndpoint + '/' + id + '/invite', { email: email });
   },
-  getTags: function(id) {
+  getTags(id) {
     return core.get(baseEndpoint + '/' + id + '/tags');
   },
-  addTag: function(id, tagId) {
+  addTag(id, tagId) {
     return core.put(baseEndpoint + '/' + id + '/tags/add', { tagId: tagId });
   },
-  removeTag: function(id, tagId) {
+  removeTag(id, tagId) {
     return core.put(baseEndpoint + '/' + id + '/tags/add', { tagId: tagId });
   },
-  getReminders: function(id) {
+  getReminders(id) {
     return core.get(baseEndpoint + '/' + id + '/reminders');
   },
-  addReminder: function(id, reminder) {
+  addReminder(id, reminder) {
     return core.post(baseEndpoint + '/' + id + '/reminders');
   },
-  removeReminder: function(id, reminderId) {
+  removeReminder(id, reminderId) {
     return core.post(baseEndpoint + '/' + id + '/reminders', { reminderId: reminderId });
   },
-  complete: function(id) {
+  complete(id) {
     return core.put(baseEndpoint + '/' + id + '/complete');
   },
-  reopen: function(id) {
+  reopen(id) {
     return core.put(baseEndpoint + '/' + id + '/reopen');
   },
-  subtasks: function(id) {
+  subtasks(id) {
     return core.get(baseEndpoint + '/' + id + '/subtasks');
   },
-  createSubtask: function(id, post) {
+  createSubtask(id, post) {
     return core.post(baseEndpoint + '/' + id + '/subtasks', post);
   }
 };

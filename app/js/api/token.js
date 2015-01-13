@@ -3,23 +3,23 @@ require('../local-storage');
 
 var Token = {
 
-  get: function(provider, token) {
+  get(provider, token) {
     return core
       .get('http://localhost:3001/token?token='+ token +'&provider=' + provider)
-      .then(function timeout(json){
+      .then((json) => {
         localStorage.setObject('jwt', json);
-        setTimeout(function refresh(){
+        setTimeout(() => {
           Token.refresh();
         }, 30*60000);
         return json;
       });
   },
-  refresh: function() {
+  refresh() {
     return core
       .get('http://localhost:3001/token?provider=refresh_token')
-      .then(function timeout(json){
+      .then((json) => {
         localStorage.setObject('jwt', json);
-        setTimeout(function refresh(){
+        setTimeout(() => {
           Token.refresh();
         }, 30*60000);
         return json;

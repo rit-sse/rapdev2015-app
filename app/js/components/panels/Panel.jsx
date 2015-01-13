@@ -8,7 +8,7 @@ var Panel = React.createClass({
     ])
   },
 
-  render: function(){
+  render() {
     var style = {
       height: "100%",
       border: "1px solid gray"

@@ -1,5 +1,6 @@
 {
   "browser": true,
   "browserify": true,
+  "esnext": true,
   "quotmark": "single"
 }

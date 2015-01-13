@@ -3,10 +3,10 @@ var core = require('./core');
 var baseEndpoint = 'http://localhost:3001/api/invites';
 
 var Invite = {
-  accept: function(id) {
+  accept(id) {
     return core.post(baseEndpoint + '/' + id + '/accept');
   },
-  decline: function(id) {
+  decline(id) {
     return core.post(baseEndpoint + '/' + id + '/decline');
   }
 };

@@ -5,7 +5,7 @@ var React = require('react');
 var Panel = require('./panels/Panel');
 
 var App = React.createClass({
-  render: function(){
+  render() {
     var style = {
       display: 'flex',
     }
