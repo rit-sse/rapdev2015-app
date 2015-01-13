@@ -18,9 +18,6 @@ var Todo = {
   remove(id) {
     return core.delete(`${baseEndpoint}/${id}`);
   },
-  invite(id, email) {
-    return core.post(`${baseEndpoint}/${id}/invite`, { email });
-  },
   getTags(id) {
     return core.get(`${baseEndpoint}/${id}/tags`);
   },
