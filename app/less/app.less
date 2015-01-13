@@ -1,7 +1,33 @@
-@import "scaffolding.less";
+/*@import "scaffolding.less";
+@import "components.less";*/
 
-@import "components.less";
+@import './materialz/material-elements.css';
+@import './materialz/material-widgets.css';
+@import './materialz/material-depth.css';
 
-html {
-    color: red;
+html,
+body,
+.app {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.app {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.appBar {
+	position: static;
+	flex-basis: 100%;
+}
+
+.panel {
+	flex-grow: 1;
+	flex-shrink: 0;
+	height: 100%;
+	padding: 24px;
 }
