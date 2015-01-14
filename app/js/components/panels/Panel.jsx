@@ -5,26 +5,20 @@ var Panel = React.createClass({
     width: React.PropTypes.oneOfType([
       React.PropTypes.oneOf(['rest']),
       React.PropTypes.number
-    ])
+    ]),
+    depth: React.PropTypes.oneOf([0, 1, 2, 3, 4, 5])
   },
 
   render() {
-    var style = {
-      height: "100%",
-      border: "1px solid gray"
-    };
+    var style = {};
 
-    if(this.props.width != "rest"){
+    if (this.props.width !== 'rest') {
       style.flexBasis = this.props.width;
       style.flexGrow = 0;
-      style.flexShrink = 0;
-    }
-    else {
-      style.flexGrow = 1;
     }
 
     return (
-      <div style={style}>
+      <div style={style} className={'panel z' + this.props.depth}>
         {this.props.children}
       </div>
     );
