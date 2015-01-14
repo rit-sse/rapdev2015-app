@@ -52,7 +52,7 @@ var TestButton = React.createClass({
     Tag
       .create({name: 'projects', color: 'FF00FF' })
       .then(() => {
-        Tag.all().then(function(json){
+        Tag.all().then((json) => {
           console.log(json)
           this.setState({response: JSON.stringify(json, null, 4)});
         })
