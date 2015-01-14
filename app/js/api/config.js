@@ -1,4 +1,5 @@
+var host = 'http://localhost:3001';
 module.exports = {
-  api_host: 'http://localhost:3001',
-  api_url: `${module.exports.api_url}/api`
+  api_host: host,
+  api_url: `${host}/api`
 };
