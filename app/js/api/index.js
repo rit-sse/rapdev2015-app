@@ -1,7 +1,7 @@
 module.exports = {
   Tag: require('./tag'),
   Event: require('./event'),
-  Invite: require('./invite'),
+  Identity: require('./identity'),
   Todo: require('./todo'),
   Token: require('./token'),
   User: require('./user')

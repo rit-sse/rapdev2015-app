@@ -17,6 +17,12 @@ var Tag = {
   },
   remove(id) {
     return core.delete(`${baseEndpoint}/${id}`);
+  },
+  addSubscriber(id, subscriberId) {
+    return core.put(`${baseEndpoint}/${id}/subscriber/${subscriberId}`);
+  },
+  removeSubscriber(id, subscriberId) {
+    return core.delete(`${baseEndpoint}/${id}/subscriber/${subscriberId}`);
   }
 };
 

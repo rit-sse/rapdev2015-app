@@ -18,26 +18,23 @@ var Event = {
   remove(id) {
     return core.delete(`${baseEndpoint}/${id}`);
   },
-  invite(id, email) {
-    return core.post(`${baseEndpoint}/${id}/invite`, { email });
+  invite(id, username) {
+    return core.put(`${baseEndpoint}/${id}/invitees/${username}`);
   },
-  getTags(id) {
-    return core.get(`${baseEndpoint}/${id}/tags`);
+  uninvite(id, username) {
+    return core.delete(`${baseEndpoint}/${id}/invitees/${username}`);
   },
-  addTag(id, tagId) {
-    return core.post(`${baseEndpoint}/${id}/tags`, { tagId });
+  addTag(id, tagName) {
+    return core.put(`${baseEndpoint}/${id}/tags/${tagName}`);
   },
   removeTag(id, tagName) {
     return core.delete(`${baseEndpoint}/${id}/tags/${tagName}`);
   },
-  getReminders(id) {
-    return core.get(`${baseEndpoint}/${id}/reminders`);
-  },
   addReminder(id, reminder) {
-    return core.post(`${baseEndpoint}/${id}/reminders`);
+    return core.put(`${baseEndpoint}/${id}/reminders`, reminder);
   },
   removeReminder(id, reminderId) {
-    return core.post(`${baseEndpoint}/${id}/reminders`, { reminderId });
+    return core.delete(`${baseEndpoint}/${id}/reminders/${reminderId}`);
   }
 };
 

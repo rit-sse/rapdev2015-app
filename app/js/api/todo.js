@@ -18,35 +18,17 @@ var Todo = {
   remove(id) {
     return core.delete(`${baseEndpoint}/${id}`);
   },
-  getTags(id) {
-    return core.get(`${baseEndpoint}/${id}/tags`);
-  },
-  addTag(id, tagId) {
-    return core.post(`${baseEndpoint}/${id}/tags`, { tagId });
+  addTag(id, tagName) {
+    return core.put(`${baseEndpoint}/${id}/tags/${tagName}`);
   },
   removeTag(id, tagName) {
     return core.delete(`${baseEndpoint}/${id}/tags/${tagName}`);
   },
-  getReminders(id) {
-    return core.get(`${baseEndpoint}/${id}/reminders`);
-  },
   addReminder(id, reminder) {
-    return core.post(`${baseEndpoint}/${id}/reminders`);
+    return core.put(`${baseEndpoint}/${id}/reminders`, reminder);
   },
   removeReminder(id, reminderId) {
-    return core.post(`${baseEndpoint}/${id}/reminders`, { reminderId });
-  },
-  complete(id) {
-    return core.put(`${baseEndpoint}/${id}/complete`);
-  },
-  reopen(id) {
-    return core.put(`${baseEndpoint}/${id}/reopen`);
-  },
-  subtasks(id) {
-    return core.get(`${baseEndpoint}/${id}/subtasks`);
-  },
-  createSubtask(id, post) {
-    return core.post(`${baseEndpoint}/${id}/subtasks`, post);
+    return core.delete(`${baseEndpoint}/${id}/reminders/${reminderId}`);
   }
 };
 
