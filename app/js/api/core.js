@@ -1,5 +1,5 @@
 require('es6-promise').polyfill();
-require('fetch');
+require('whatwg-fetch');
 
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
