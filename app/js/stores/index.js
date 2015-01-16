@@ -3,5 +3,6 @@
  **************************/
 
  module.exports = {
-  User: require('./User.js')
+  UserStore: require('./user.js'),
+  TagsStore: require('./tags.js')
  };

@@ -11,7 +11,7 @@ var UserStore = Fluxxor.createStore({
     this.bindActions(
       actions.SIGN_IN_SUCCESS, this._signIn,
       actions.SIGN_IN_FAILURE, this._signInFail,
-      actions.SIGN_OUT, this.signOut
+      actions.SIGN_OUT, this._signOut
     );
   },
 
@@ -22,6 +22,10 @@ var UserStore = Fluxxor.createStore({
     }
 
     this.emit('change');
+  },
+
+  _signInFail(payload, type){
+    console.log("Sign in broke. We didn't handle it. I can't handle the pressure, ohgodwhy");
   },
 
   _signOut(payload, type) {
@@ -35,3 +39,4 @@ var UserStore = Fluxxor.createStore({
 
 });
 
+module.exports = UserStore;

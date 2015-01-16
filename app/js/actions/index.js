@@ -3,5 +3,6 @@
  **************************/
 
   module.exports = {
-    user: require('./user')
+    user: require('./user'),
+    tags: require('./tags')
   };
