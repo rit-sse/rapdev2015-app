@@ -1,5 +1,5 @@
-var host = 'http://localhost:3001';
+var host = 'http://private-anon-35dccc21b-cdar.apiary-mock.com';
 module.exports = {
   api_host: host,
-  api_url: `${host}/api`
+  api_url: `${host}`
 };
