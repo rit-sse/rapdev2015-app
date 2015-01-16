@@ -1,4 +1,5 @@
 var actions = require('../constants/actions');
+var Tag = require('../api/tag');
 
 module.exports = {
 
@@ -17,11 +18,19 @@ module.exports = {
   setActiveTags(tags) {
     this.dispatch(actions.SET_ACTIVE_TAGS, {
         tags: tags
-    });
+    }); 
   },
 
   fetchTags() {
-    // use api to fetch all tags for user
+    Tag
+        .all()
+        .then((tags) => {
+            this.dispatch(actions.FETCH_TAGS_SUCCESS, tags);
+        })
+        .catch((err) => {
+            this.dispatch(actions.FETCH_TAGS_FAILURE, err);
+        });
+
   }
 
 

@@ -11,4 +11,6 @@ var store_inst = {
 
 var app = new Fluxxor.Flux(store_inst, actions);
 
+app.on('dispatch',function(){ console.log(arguments)});
+
 module.exports = app;

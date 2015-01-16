@@ -1,6 +1,7 @@
 var React = require('react'),
   Fluxxor = require('fluxxor'),
   FluxMixin = Fluxxor.FluxMixin(React),
+  Flux = require('../flux'),
   StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var TagList = require('./TagList');
@@ -156,6 +157,7 @@ var TagSearch = React.createClass({
   
   // React lifecycle methods
   getInitialState() {
+    Flux.actions.tags.fetchTags();
     return {
       focusedItem: -1,
       filteredTags: this._sortTags(HARD_CODED_TAGS),
