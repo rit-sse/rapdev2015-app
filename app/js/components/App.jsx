@@ -3,7 +3,8 @@ var React = require('react'),
   FluxMixin = Fluxxor.FluxMixin(React);
 
 var AppBar = require('./AppBar'),
-  Panel = require('./panels/Panel');
+  Panel = require('./panels/Panel'),
+  TagSearch = require('./TagSearch');
 //var TodoPanel = require('./panels/TodoPanel');
 
 var App = React.createClass({
@@ -13,7 +14,7 @@ var App = React.createClass({
       <div className="app">
         <AppBar />
         <Panel width={256} depth={1}>
-          This is some text.
+          <TagSearch />
         </Panel>
         <Panel width="rest" depth={0}>
           <p> hi </p>
