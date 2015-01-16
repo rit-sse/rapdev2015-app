@@ -4,5 +4,5 @@
 
  module.exports = {
   UserStore: require('./user.js'),
-  TagsStore: require('./tags.js')
+  TagStore: require('./tags.js')
  };

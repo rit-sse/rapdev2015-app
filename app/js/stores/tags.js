@@ -1,7 +1,7 @@
 var Fluxxor = require('fluxxor');
 var actions = require('../constants/actions');
 
-var TagsStore = Fluxxor.createStore({
+var TagStore = Fluxxor.createStore({
   initialize(options) {
 
     this.data = {
@@ -59,4 +59,4 @@ var TagsStore = Fluxxor.createStore({
 
 });
 
-module.exports = TagsStore;
+module.exports = TagStore;
