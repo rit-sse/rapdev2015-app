@@ -1,6 +1,7 @@
 var React = require('react'),
   Fluxxor = require("fluxxor"),
-  FluxMixin = Fluxxor.FluxMixin(React);
+  FluxMixin = Fluxxor.FluxMixin(React),
+  StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var AppBar = require('./AppBar'),
   Panel = require('./panels/Panel'),
@@ -8,7 +9,13 @@ var AppBar = require('./AppBar'),
 //var TodoPanel = require('./panels/TodoPanel');
 
 var App = React.createClass({
-  mixins: [FluxMixin],
+  mixins: [FluxMixin, StoreWatchMixin('UserStore')],
+  
+  getInitialState() {
+    return null;
+  },
+  getStateFromFlux() {},
+  
   render() {
     return (
       <div className="app">
@@ -18,7 +25,7 @@ var App = React.createClass({
         </Panel>
         <Panel width="rest" depth={0}>
           <p> hi </p>
-          <p><LoginButton flux={this.props.flux} /></p>
+          <p><LoginButton /></p>
           <p><TestButton /></p>
         </Panel>
       </div>
@@ -31,12 +38,14 @@ var hello = require('hellojs');
 var service = 'facebook';
 
 var LoginButton = React.createClass({
+  mixins: [FluxMixin],
   getInitialState() {
     return {token: null};
   },
+  getStateFromFlux() {},
   render() {
     hello(service).init({facebook: '1654582774769215'}, {response_type: 'token'});
-    return <button onClick={this.props.flux.actions.user.signIn.bind(null, 'facebook')} className="z1">{this.state.token ? 'Logged In!' : 'Login'}</button>
+    return <button onClick={this.getFlux().actions.user.signIn.bind(null, 'facebook')} className="z1">{this.state.token ? 'Logged In!' : 'Login'}</button>
   }
 });
 

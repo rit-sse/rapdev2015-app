@@ -5,7 +5,7 @@ var TagStore = Fluxxor.createStore({
   initialize(options) {
 
     this.data = {
-      tags: {}
+      tags: []
     };
 
 
@@ -19,21 +19,21 @@ var TagStore = Fluxxor.createStore({
   },
 
   _activateTag(payload, type) {
-    this.data.tags[payload.tag].active = true;
+    this.data.tags.filter((tag) => tag.id === payload.tag)[0].active = true;
 
     this.emit('change');
   },
 
   _deactivateTag(payload, type) {
-    this.data.tags[payload.tag].active = false;
+    this.data.tags.filter((tag) => tag.id === payload.tag)[0].active = false;
 
     this.emit('change');
   },
 
   _setActiveTags(payload, type) {
-    payload.tags.forEach((tag) => {
-      this.data.tags[tag].active = true;
-    });
+    this.data.tags.filter((tag) => payload.tags.indexOf(tag.id) !== -1).forEach((tag) =>
+      tag.active = true
+    );
 
     this.emit('change');
   },
@@ -46,10 +46,10 @@ var TagStore = Fluxxor.createStore({
       tag.active = false;
       return tag;
     });
+    this.emit('change');
   },
 
   getAllTags() {
-    console.log(this.data.tags);
     return this.data.tags;
   },
 
