@@ -25,27 +25,10 @@ var App = React.createClass({
         </Panel>
         <Panel width="rest" depth={0}>
           <p> hi </p>
-          <p><LoginButton /></p>
           <p><TestButton /></p>
         </Panel>
       </div>
     );
-  }
-});
-
-
-var hello = require('hellojs');
-var service = 'facebook';
-
-var LoginButton = React.createClass({
-  mixins: [FluxMixin],
-  getInitialState() {
-    return {token: null};
-  },
-  getStateFromFlux() {},
-  render() {
-    hello(service).init({facebook: '1654582774769215'}, {response_type: 'token'});
-    return <button onClick={this.getFlux().actions.user.signIn.bind(null, 'facebook')} className="z1">{this.state.token ? 'Logged In!' : 'Login'}</button>
   }
 });
 
