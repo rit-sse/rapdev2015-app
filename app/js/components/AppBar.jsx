@@ -1,12 +1,13 @@
-var React = require('react'),
-  Fluxxor = require("fluxxor"),
-  FluxMixin = Fluxxor.FluxMixin(React);
+var React = require('react');
+
+var LogIn = require('./LogIn');
 
 var AppBar = React.createClass({
-  mixins: [FluxMixin],
   render() {
+    
     return (
       <header className="appBar z1">
+        <LogIn />
         RapDev 2015
       </header>
     );
