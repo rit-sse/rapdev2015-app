@@ -8,7 +8,6 @@ Getting Setup
 * Bower	- `npm install -g bower`
 
 ### Initial Setup
-* From `app/`: `bower install`
 * From `/`:
 	* `npm install -d`
 	* `gulp`
