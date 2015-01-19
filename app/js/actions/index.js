@@ -4,5 +4,6 @@
 
   module.exports = {
     user: require('./user'),
-    tags: require('./tags')
+    tags: require('./tags'),
+    todos: require('./todos')
   };

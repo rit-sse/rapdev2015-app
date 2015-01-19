@@ -14,7 +14,7 @@ module.exports = {
           this.dispatch(actions.CREATE_TODO_FAILURE, err);
       })
 
-  }
+  },
 
   updateTodo(todoId, todoObj) {
     Todo
@@ -29,7 +29,7 @@ module.exports = {
           this.dispatch(actions.UPDATE_TODO_FAILURE, err);
       })
 
-  }
+  },
 
   removeTodo(todoId) {
     Todo
