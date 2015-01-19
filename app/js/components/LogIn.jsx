@@ -9,7 +9,7 @@ var SERVICE = 'facebook';
 var LogIn = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore')],
   
-  handleLoginButtonClick() {
+  _handleLoginButtonClick() {
     this.getFlux().actions.user.signIn('facebook');
   },
   
@@ -32,7 +32,7 @@ var LogIn = React.createClass({
     if (this.state.user) {
       var content = <div style={{margin: '6px 2px'}}>{this.state.user.firstName + ' ' + this.state.user.lastName}</div>;
     } else {
-      var content = <button style={{borderRadius: '28px', width: 'auto'}} onClick={this.handleLoginButtonClick}>Log in</button>;
+      var content = <button style={{borderRadius: '28px', width: 'auto'}} onClick={this._handleLoginButtonClick}>Log in</button>;
     }
     
     return (

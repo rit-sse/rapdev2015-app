@@ -4,7 +4,6 @@ var LogIn = require('./LogIn');
 
 var AppBar = React.createClass({
   render() {
-    
     return (
       <header className="appBar z1">
         <LogIn />
