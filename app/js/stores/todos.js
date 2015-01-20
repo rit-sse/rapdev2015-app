@@ -19,7 +19,9 @@ var TodosStore = Fluxxor.createStore({
       actions.UPDATE_TODO_SUCCESS, this._updateTodo,
       actions.UPDATE_TODO_FAILURE, this._updateTodo,
       actions.REMOVE_TODO_SUCCESS, this._removeTodo,
-      actions.REMOVE_TODO_FAILURE, this._removeTodo
+      actions.REMOVE_TODO_FAILURE, this._removeTodo,
+      actions.ADD_TAG_TO_TODO_SUCCESS, this._addTagToTodo,
+      actions.ADD_TAG_TO_TODO_FAILURE, this._addTagToTodo
     );
   },
 
@@ -32,7 +34,7 @@ var TodosStore = Fluxxor.createStore({
 
       this.emit('change');
     }
-  }
+  },
 
   _fetchTodo(payload, type) {
     if(type == actions.FETCH_TODO_FAILURE){
@@ -42,7 +44,7 @@ var TodosStore = Fluxxor.createStore({
       //TODO
       //this.data.todos[payload.todoId]
     }
-  }
+  },
 
   _fetchTodos(payload, type) {
     if(type == actions.FETCH_TODOS_FAILURE){
@@ -51,7 +53,7 @@ var TodosStore = Fluxxor.createStore({
     else {
       //TODO
     }
-  }
+  },
 
   _updateTodo(payload, type) {
     if(type == actions.UPDATE_TODO_FAILURE) {
@@ -62,7 +64,7 @@ var TodosStore = Fluxxor.createStore({
 
       this.emit('change');
     }
-  }
+  },
 
   _removeTodo(payload, type) {
     if(type == actions.REMOVE_TODO_FAILURE) {
@@ -74,6 +76,17 @@ var TodosStore = Fluxxor.createStore({
       this.emit('change');
     }
   },
+
+  _addTagToTodo(payload, type){
+    if(type == actions.ADD_TAG_TO_TODO_FAILURE) {
+      console.log(actions.ADD_TAG_TO_TODO_FAILURE, payload.stack);
+    }
+    else {
+      this.data.todos[payload.todoId].tags.push( tagId /* really should be tag object */);
+
+      this.emit('change');
+    }
+  }
 
 
 });
