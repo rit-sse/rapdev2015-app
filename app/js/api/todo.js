@@ -18,11 +18,11 @@ var Todo = {
   remove(id) {
     return core.delete(`${baseEndpoint}/${id}`);
   },
-  addTag(id, tagName) {
-    return core.put(`${baseEndpoint}/${id}/tags/${tagName}`);
+  addTag(id, tagId) {
+    return core.put(`${baseEndpoint}/${id}/tags/${tagId}`);
   },
-  removeTag(id, tagName) {
-    return core.delete(`${baseEndpoint}/${id}/tags/${tagName}`);
+  removeTag(id, tagId) {
+    return core.delete(`${baseEndpoint}/${id}/tags/${tagId}`);
   },
   addReminder(id, reminder) {
     return core.put(`${baseEndpoint}/${id}/reminders`, reminder);
