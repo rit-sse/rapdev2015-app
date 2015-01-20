@@ -1,6 +1,8 @@
-/*@import "scaffolding.less";
-@import "components.less";*/
+/* Variables */
+@colorPrimary: #009688; /* Material teal */
+@colorAccent: #8bc34a; /* Material light green */
 
+/* MaterialZ */
 @import (inline) './materialz/material-elements.css';
 @import (inline) './materialz/material-widgets.css';
 @import (inline) './materialz/material-depth.css';
@@ -23,6 +25,8 @@ body,
 .appBar {
 	position: static;
 	flex-basis: 100%;
+	
+	background-color: @colorPrimary;
 }
 
 .panel {
