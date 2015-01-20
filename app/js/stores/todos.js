@@ -12,6 +12,8 @@ var TodosStore = Fluxxor.createStore({
     this.bindActions(
       actions.CREATE_TODO_SUCCESS, this._createTodo,
       actions.CREATE_TODO_FAILURE, this._createTodo,
+      actions.FETCH_TODO_SUCCESS, this._fetchTodo,
+      actions.FETCH_TODO_FAILURE, this._fetchTodo,
       actions.UPDATE_TODO_SUCCESS, this._updateTodo,
       actions.UPDATE_TODO_FAILURE, this._updateTodo,
       actions.REMOVE_TODO_SUCCESS, this._removeTodo,
@@ -19,7 +21,7 @@ var TodosStore = Fluxxor.createStore({
     );
   },
 
-  _createTodo(payload, type)
+  _createTodo(payload, type) {
     if(type == actions.CREATE_TODO_FAILURE) {
       console.log(actions.CREATE_TODO_FAILURE, payload.stack);
     }
@@ -27,6 +29,16 @@ var TodosStore = Fluxxor.createStore({
       this.data.todos[payload.todoObj.id] = payload.todoObj;
 
       this.emit('change');
+    }
+  }
+
+  _fetchTodo(payload, type) {
+    if(type == actions.FETCH_TODO_FAILURE){
+      console.log(actions.FETCH_TODO_FAILURE, payload.stack);
+    }
+    else {
+      //TODO
+      //this.data.todos[payload.todoId]
     }
   }
 
