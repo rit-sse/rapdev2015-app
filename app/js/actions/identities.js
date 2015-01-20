@@ -43,58 +43,58 @@ module.exports = {
   },
 
   updateIdentity(identityId, identityObj) {
-    Todo
-      .update(todoId, todoObj)
-      .then( (todoObj) => {
-          this.dispatch(actions.UPDATE_TODO_SUCCESS, {
-            todoId:todoId,
-            todoObj:todoObj
+    Identity
+      .update(identityId, identityObj)
+      .then( (identityObj) => {
+          this.dispatch(actions.UPDATE_IDENTITY_SUCCESS, {
+            identityId:identityId,
+            identityObj:identityObj
           });
       })
       .catch( (err) => {
-          this.dispatch(actions.UPDATE_TODO_FAILURE, err);
+          this.dispatch(actions.UPDATE_IDENTITY_FAILURE, err);
       })
 
   },
 
-  removeTodo(todoId) {
-    Todo
-      .remove(todoId)
-      .then( (todoId) => {
-          this.dispatch(actions.REMOVE_TODO_SUCCESS, {
-            todoId:todoId
+  removeIdentity(identityId) {
+    Identity
+      .remove(identityId)
+      .then( (identityId) => {
+          this.dispatch(actions.REMOVE_IDENTITY_SUCCESS, {
+            identityId:identityId
           });
       })
       .catch( (err) => {
-          this.dispatch(actions.REMOVE_TODO_FAILURE, err);
+          this.dispatch(actions.REMOVE_IDENTITY_FAILURE, err);
       })
   },
 
-  addTagToTodo(todoId, tagId) {
-    Todo
-      .addTag(todoId, tagId)
-      .then( (todoId) => {
-          this.dispatch(actions.ADD_TAG_TO_TODO_SUCCESS, {
-            todoId:todoId,
-            tagId: tagId
+  addMemberToIdentity(identityId, memberId) {
+    Identity
+      .addMember(identityId, memberId)
+      .then( (identityId) => {
+          this.dispatch(actions.ADD_MEMBER_TO_IDENTITY_SUCCESS, {
+            identityId:identityId,
+            memberId: memberId
           });
       })
       .catch( (err) => {
-          this.dispatch(actions.ADD_TAG_TO_TODO_FAILURE, err);
+          this.dispatch(actions.ADD_MEMBER_TO_IDENTITY_FAILURE, err);
       })
   },
 
-  removeTagToTodo(todoId, tagId) {
-    Todo
-      .removeTag(todoId, tagId)
-      .then((todoId, tagId) => {
-        this.dispatch(actions.REMOVE_TAG_TO_TODO_SUCCESS,{
-          todoId: todoId,
-          tagId: tagId
+  removeMemberToIdentity(identityId, memberId) {
+    Identity
+      .removeTag(identityId, memberId)
+      .then((identityId, memberId) => {
+        this.dispatch(actions.REMOVE_MEMBER_FROM_IDENTITY_SUCCESS,{
+          identityId: identityId,
+          memberId: memberId
         });
       })
       .catch( (err) => {
-        this.dispatch(actions.REMOVE_TAG_TO_TODO_FAILURE, err);
+        this.dispatch(actions.REMOVE_MEMBER_FROM_IDENTITY_FAILURE, err);
       })
   }
 

@@ -22,8 +22,8 @@ var TodosStore = Fluxxor.createStore({
       actions.REMOVE_TODO_FAILURE, this._removeTodo,
       actions.ADD_TAG_TO_TODO_SUCCESS, this._addTagToTodo,
       actions.ADD_TAG_TO_TODO_FAILURE, this._addTagToTodo,
-      actions.REMOVE_TAG_TO_TODO_SUCCESS.this_removeTagToTodo,
-      actions.REMOVE_TAG_TO_TODO_FAILURE.this_removeTagToTodo
+      actions.REMOVE_TAG_FROM_TODO_SUCCESS.this_removeTagToTodo,
+      actions.REMOVE_TAG_FROM_TODO_FAILURE.this_removeTagToTodo
 
     );
   },
