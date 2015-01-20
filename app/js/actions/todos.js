@@ -29,6 +29,19 @@ module.exports = {
       });
   },
 
+  fetchTodos() {
+    Todo
+      .all()
+      .then((todos) => {
+        this.dispatch(actions.FETCH_TODOS_SUCCESS, {
+          todos:todos
+        });
+      })
+      .catch((err) => {
+        this.dispatch(actions.FETCH_TODOS_FAILURE, err);
+      });
+  },
+
   updateTodo(todoId, todoObj) {
     Todo
       .update(todoId, todoObj)

@@ -14,6 +14,8 @@ var TodosStore = Fluxxor.createStore({
       actions.CREATE_TODO_FAILURE, this._createTodo,
       actions.FETCH_TODO_SUCCESS, this._fetchTodo,
       actions.FETCH_TODO_FAILURE, this._fetchTodo,
+      actions.FETCH_TODOS_SUCCESS, this._fetchTodos,
+      actions.FETCH_TODOS_FAILURE, this._fetchTodos,
       actions.UPDATE_TODO_SUCCESS, this._updateTodo,
       actions.UPDATE_TODO_FAILURE, this._updateTodo,
       actions.REMOVE_TODO_SUCCESS, this._removeTodo,
@@ -39,6 +41,15 @@ var TodosStore = Fluxxor.createStore({
     else {
       //TODO
       //this.data.todos[payload.todoId]
+    }
+  }
+
+  _fetchTodos(payload, type) {
+    if(type == actions.FETCH_TODOS_FAILURE){
+      console.log(actions.FETCH_TODOS_FAILURE, payload.stack);
+    }
+    else {
+      //TODO
     }
   }
 
