@@ -82,6 +82,20 @@ module.exports = {
       .catch( (err) => {
           this.dispatch(actions.ADD_TAG_TO_TODO_FAILURE, err);
       })
+  },
+
+  removeTagToTodo(todoId, tagId) {
+    Todo
+      .removeTag(todoId, tagId)
+      .then((todoId, tagId) => {
+        this.dispatch(actions.REMOVE_TAG_TO_TODO_SUCCESS,{
+          todoId: todoId,
+          tagId: tagId
+        });
+      })
+      .catch( (err) => {
+        this.dispatch(actions.REMOVE_TAG_TO_TODO_FAILURE, err);
+      })
   }
 
 }

@@ -21,7 +21,10 @@ var TodosStore = Fluxxor.createStore({
       actions.REMOVE_TODO_SUCCESS, this._removeTodo,
       actions.REMOVE_TODO_FAILURE, this._removeTodo,
       actions.ADD_TAG_TO_TODO_SUCCESS, this._addTagToTodo,
-      actions.ADD_TAG_TO_TODO_FAILURE, this._addTagToTodo
+      actions.ADD_TAG_TO_TODO_FAILURE, this._addTagToTodo,
+      actions.REMOVE_TAG_TO_TODO_SUCCESS.this_removeTagToTodo,
+      actions.REMOVE_TAG_TO_TODO_FAILURE.this_removeTagToTodo
+
     );
   },
 
@@ -82,9 +85,23 @@ var TodosStore = Fluxxor.createStore({
       console.log(actions.ADD_TAG_TO_TODO_FAILURE, payload.stack);
     }
     else {
-      this.data.todos[payload.todoId].tags.push( tagId /* really should be tag object */);
+      this.data.todos[payload.todoId].tags.push( payload.tagId /* really should be tag object */);
 
       this.emit('change');
+    }
+  },
+
+  _removeTagToTodo(payload, type){
+    if(type == actions.REMOVE_TAG_TO_TODO_FAILURE) {
+      console.log(actions.REMOVE_TAG_TO_TODO_FAILURE, payload.stack);
+    }
+    else {
+      var tagIndex = this.data.todos[payload.todoId].tags.indexOf( payload.tagId /* really should be tag object */);
+      if(tagIndex > -1){
+        this.data.todos[payload.todoId].tags.splice(tagIndex, 1);
+      }
+
+      this.emmit('change');
     }
   }
 
