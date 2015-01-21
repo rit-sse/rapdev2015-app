@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2015 by original authors @ fontello.com</metadata>
+<defs>
+<font id="icons" horiz-adv-x="1000" >
+<font-face font-family="icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="view-module" unicode="&#xe000;" d="m146 371h208v250h-208v-250z m0-292h208v250h-208v-250z m250 0h208v250h-208v-250z m250 0h208v250h-208v-250z m-250 292h208v250h-208v-250z m250 250v-250h208v250h-208z" horiz-adv-x="1000" />
+<glyph glyph-name="view-column" unicode="&#xe001;" d="m396 79h208v542h-208v-542z m-250 0h208v542h-208v-542z m500 542v-542h208v542h-208z" horiz-adv-x="1000" />
+<glyph glyph-name="view-day" unicode="&#xe002;" d="m854 185v-105h-708v105h708z m-708 291h708v-250h-708v250z m0 40v104h708v-104h-708z" horiz-adv-x="1000" />
+<glyph glyph-name="view-stream" unicode="&#xe003;" d="m146 79h708v250h-708v-250z m0 542v-250h708v250h-708z" horiz-adv-x="1000" />
+<glyph glyph-name="label-outline" unicode="&#xe004;" d="m735 607c-15 21-40 35-68 35l-459-1c-46 0-83-37-83-83v-416c0-46 37-83 83-83l459-1c28 0 53 14 68 36l182 256-182 257z m-68-465h-459v416h459l147-208-147-208z" horiz-adv-x="1000" />
+<glyph glyph-name="label" unicode="&#xe005;" d="m735 607c-15 21-40 35-68 35l-459-1c-46 0-83-37-83-83v-416c0-46 37-83 83-83l459-1c28 0 53 14 68 36l182 256-182 257z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>
