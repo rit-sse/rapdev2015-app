@@ -148,7 +148,7 @@ var TagSearchPanel = React.createClass({
     return (
       <Panel width={224} depth={1}>
         <form onSubmit={this._handleSubmit}>
-          <input type="search" placeholder="Enable or disable tags" className="tagSearchBox" onChange={this._handleQueryChange} onKeyDown={this._handleKeyDown} onBlur={this._handleBlur}/>
+          <input type="search" placeholder="Search your tags" className="tagSearchBox" onChange={this._handleQueryChange} onKeyDown={this._handleKeyDown} onBlur={this._handleBlur}/>
           <TagList tags={tags} />
         </form>
       </Panel>
