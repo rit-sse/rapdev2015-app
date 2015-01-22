@@ -1,0 +1,30 @@
+.tagSearchBox {
+	width: 100%;
+}
+
+.tagList li {
+	border: 0 none;
+}
+	.tagList li.focused {
+		background-color: rgba(0,0,0,0.05);
+	}
+	.tagList li input[type="checkbox"] {
+		margin: -4px 16px 0px 0px;
+		border: 0 none;
+	}
+		.tagList li input[type="checkbox"]:checked {
+			box-shadow: none;
+		}
+		.tagList li input[type="checkbox"]:after {
+			font-family: 'icons';
+			font-size: 24px;
+			content: '\e004'; /* Outlined tag */
+			
+			border: 0 none;
+			transform: none;
+		}
+			.tagList li input[type="checkbox"]:checked:after {
+				content: '\e005'; /* Filled tag */
+				
+				transform: none;
+			}

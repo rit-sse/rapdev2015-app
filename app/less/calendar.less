@@ -1,0 +1,25 @@
+.calendarToolbar input[type="radio"][role="button"]:checked {
+	color: @colorAccent;
+}
+.calendarToolbar input[type="radio"][role="button"]:after {
+	font-family: 'icons';
+	font-size: 32px;
+	margin: 12px;
+	
+	color: inherit;
+	border: 0 none;
+	box-shadow: none;
+	transform: none;
+}
+	.calendarToolbar input[type="radio"][value="month"]:after {
+		content: '\e000'; /* Module view */
+	}
+	.calendarToolbar input[type="radio"][value="week"]:after {
+		content: '\e001'; /* Column view */
+	}
+	.calendarToolbar input[type="radio"][value="day"]:after {
+		content: '\e002'; /* Day view */
+	}
+	.calendarToolbar input[type="radio"][value="agenda"]:after {
+		content: '\e003'; /* Stream view */
+	}
