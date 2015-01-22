@@ -4,9 +4,9 @@ var React = require('react'),
   StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 var AppBar = require('./AppBar'),
-  Panel = require('./panels/Panel'),
+  Panel = require('./Panel'),
   TagSearch = require('./TagSearch'),
-  Calendar = require('./Calendar');
+  CalendarPanel = require('./calendar/CalendarPanel');
 //var TodoPanel = require('./panels/TodoPanel');
 
 var App = React.createClass({
@@ -24,9 +24,7 @@ var App = React.createClass({
         <Panel width={224} depth={1}>
           <TagSearch />
         </Panel>
-        <Panel width="rest" depth={0}>
-          <Calendar />
-        </Panel>
+        <CalendarPanel />
         <Panel width={192} depth={1}>
           To-dos:
         </Panel>
