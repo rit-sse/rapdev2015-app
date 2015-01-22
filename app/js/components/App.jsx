@@ -5,7 +5,7 @@ var React = require('react'),
 
 var AppBar = require('./AppBar'),
   Panel = require('./Panel'),
-  TagSearch = require('./TagSearch'),
+  TagSearch = require('./tags/TagSearch'),
   CalendarPanel = require('./calendar/CalendarPanel');
 //var TodoPanel = require('./panels/TodoPanel');
 
