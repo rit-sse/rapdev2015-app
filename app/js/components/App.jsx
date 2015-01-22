@@ -5,7 +5,7 @@ var React = require('react'),
 
 var AppBar = require('./AppBar'),
   Panel = require('./Panel'),
-  TagSearch = require('./tags/TagSearch'),
+  TagSearchPanel = require('./tags/TagSearchPanel'),
   CalendarPanel = require('./calendar/CalendarPanel');
 //var TodoPanel = require('./panels/TodoPanel');
 
@@ -21,9 +21,7 @@ var App = React.createClass({
     return (
       <div className="app">
         <AppBar />
-        <Panel width={224} depth={1}>
-          <TagSearch />
-        </Panel>
+        <TagSearchPanel />
         <CalendarPanel />
         <Panel width={192} depth={1}>
           To-dos:

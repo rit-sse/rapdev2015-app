@@ -3,10 +3,11 @@ var React = require('react'),
   FluxMixin = Fluxxor.FluxMixin(React),
   StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var TagList = require('./TagList');
+var Panel = require('../Panel'),
+  TagList = require('./TagList');
 
 
-var TagSearch = React.createClass({
+var TagSearchPanel = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('TagStore')],
   propTypes: {
     query: React.PropTypes.string
@@ -145,14 +146,14 @@ var TagSearch = React.createClass({
     tags.forEach((tag, i) => tag.focused = i === this.state.focusedItem);
     
     return (
-      <div>
+      <Panel width={224} depth={1}>
         <form onSubmit={this._handleSubmit}>
           <input type="search" placeholder="Enable or disable tags" className="tagSearchBox" onChange={this._handleQueryChange} onKeyDown={this._handleKeyDown} onBlur={this._handleBlur}/>
           <TagList tags={tags} />
         </form>
-      </div>
+      </Panel>
     );
   }
 });
 
-module.exports = TagSearch;
+module.exports = TagSearchPanel;
