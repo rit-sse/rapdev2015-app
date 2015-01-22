@@ -18,5 +18,10 @@ module.exports = {
             lastName: 'last'
         });
       });
+  },
+  signOut() {
+    // Delete the JWT from localStorage.
+    delete localStorage.jwt;
+    this.dispatch(actions.SIGN_OUT);
   }
 }

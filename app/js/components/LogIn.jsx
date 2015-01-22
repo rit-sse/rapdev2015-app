@@ -9,8 +9,11 @@ var SERVICE = 'facebook';
 var LogIn = React.createClass({
   mixins: [FluxMixin, StoreWatchMixin('UserStore')],
   
-  _handleLoginButtonClick() {
+  _handleLogInButtonClick() {
     this.getFlux().actions.user.signIn('facebook');
+  },
+  _handleLogOutButtonClick() {
+    this.getFlux().actions.user.signOut();
   },
   
   // React and Flux lifecycle methods
@@ -29,17 +32,32 @@ var LogIn = React.createClass({
   render() {
     hello(SERVICE).init({facebook: '1654582774769215'}, {response_type: 'token'});
     
+    var containerStyle = {
+      float: 'right',
+      fontSize: '16px'
+    };
+    
+    var buttonStyle = {
+      borderRadius: '28px',
+      width: 'auto'
+    };
+    
     if (this.state.user) {
-      var content = <div style={{margin: '6px 2px'}}>{this.state.user.firstName + ' ' + this.state.user.lastName}</div>;
+      var content = (
+        <div style={containerStyle}>
+          <span style={{display: 'inline-block', margin: '6px 2px'}}>{this.state.user.firstName + ' ' + this.state.user.lastName}</span>
+          <button style={buttonStyle} onClick={this._handleLogOutButtonClick}>Log out</button>
+        </div>
+      );
     } else {
-      var content = <button style={{borderRadius: '28px', width: 'auto'}} onClick={this._handleLoginButtonClick}>Log in</button>;
+      var content = (
+        <div style={containerStyle}>
+          <button style={buttonStyle} onClick={this._handleLogInButtonClick}>Log in</button>
+        </div>
+      );
     }
     
-    return (
-      <div style={{float: 'right', fontSize: '16px'}}>
-        {content}
-      </div>
-    );
+    return content;
   }
 });
 
